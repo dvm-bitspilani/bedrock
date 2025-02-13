@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+  KeyboardAvoidingView,
   StyleSheet,
   Text,
   TextInput,
@@ -8,6 +9,7 @@ import {
 } from "react-native";
 
 import { LinearGradient } from "expo-linear-gradient";
+import { router } from "expo-router";
 
 export default function LoginContainer() {
   const [username, setUsername] = useState("");
@@ -22,7 +24,6 @@ export default function LoginContainer() {
     >
       <Text style={styles.titleText}>BedRock</Text>
 
-      {/* Input Fields */}
       <View style={{ gap: 16, width: "100%", marginTop: 30 }}>
         <LinearGradient
           colors={["#272C38", "#404656"]}
@@ -49,14 +50,18 @@ export default function LoginContainer() {
             style={styles.input}
             placeholder="Password"
             placeholderTextColor="#A4A4A4"
-            value={username}
+            value={password}
             onChangeText={setPassword}
           />
         </LinearGradient>
       </View>
 
-      {/* Login Button */}
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => {
+          router.push("/home");
+        }}
+      >
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
     </LinearGradient>

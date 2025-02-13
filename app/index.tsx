@@ -1,7 +1,5 @@
-import { Image, StyleSheet } from "react-native";
+import { Image, StyleSheet, View } from "react-native";
 
-import EditScreenInfo from "@/components/EditScreenInfo";
-import { Text, View } from "@/components/Themed";
 import { LinearGradient } from "expo-linear-gradient";
 import LoginContainer from "@/components/LoginComponent";
 
@@ -45,10 +43,5 @@ const styles = StyleSheet.create({
     height: 400,
     top: 70,
     right: 0,
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: "80%",
   },
 });
