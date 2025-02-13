@@ -4,12 +4,14 @@ import {
   moderateScale,
   verticalScale,
 } from "@/utils/dimensionUtils";
+import { router } from "expo-router";
 import React from "react";
 import {
   Image,
   ImageSourcePropType,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from "react-native";
 
@@ -33,8 +35,22 @@ export default function ExploreSection() {
         </View>
 
         <View style={styles.productList}>
-          <ProductItem title="Special Menu" itemCount={12} image="food1" />
-          <ProductItem title="Combos" itemCount={5} image="food1" />
+          <ProductItem
+            onPress={() => {
+              router.push("/menu?type=special");
+            }}
+            title="Special Menu"
+            itemCount={12}
+            image="food1"
+          />
+          <ProductItem
+            onPress={() => {
+              router.push("/menu?type=combo");
+            }}
+            title="Combos"
+            itemCount={5}
+            image="food1"
+          />
         </View>
       </View>
     </View>
@@ -45,10 +61,12 @@ const ProductItem = ({
   title,
   itemCount,
   image,
+  onPress,
 }: {
   title: string;
   itemCount: number;
   image: string;
+  onPress?: () => void;
 }) => {
   return (
     <View style={styles.productBoxContainer}>
@@ -64,9 +82,9 @@ const ProductItem = ({
           }}
         >
           <Text style={styles.productItemCount}>{`${itemCount} items`}</Text>
-          <View style={styles.button}>
+          <TouchableOpacity onPress={onPress} style={styles.button}>
             <RightArrow />
-          </View>
+          </TouchableOpacity>
         </View>
       </View>
     </View>
