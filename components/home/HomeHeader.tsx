@@ -1,3 +1,8 @@
+import {
+  horizontalScale,
+  moderateScale,
+  verticalScale,
+} from "@/utils/dimensionUtils";
 import React, { useState } from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 
@@ -34,14 +39,14 @@ const styles = StyleSheet.create({
   greetingText: {
     color: "#FFF",
     fontFamily: "Manrope",
-    fontSize: 24,
+    fontSize: moderateScale(24),
     fontStyle: "normal",
     fontWeight: "600",
   },
   expenditureText: {
     color: "#FFF",
     fontFamily: "Manrope",
-    fontSize: 16,
+    fontSize: moderateScale(16),
     fontStyle: "normal",
     fontWeight: "300",
   },
@@ -49,12 +54,12 @@ const styles = StyleSheet.create({
   positionText: {
     color: "#000",
     fontFamily: "Manrope",
-    fontSize: 16,
+    fontSize: moderateScale(16),
     fontStyle: "normal",
     fontWeight: "500",
     textAlign: "center",
     position: "absolute",
-    top: 50,
-    left: 5,
+    top: verticalScale(50),
+    left: horizontalScale(5),
   },
 });

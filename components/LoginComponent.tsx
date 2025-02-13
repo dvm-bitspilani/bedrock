@@ -10,6 +10,11 @@ import {
 
 import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
+import {
+  horizontalScale,
+  moderateScale,
+  verticalScale,
+} from "@/utils/dimensionUtils";
 
 export default function LoginContainer() {
   const [username, setUsername] = useState("");
@@ -70,56 +75,56 @@ export default function LoginContainer() {
 
 const styles = StyleSheet.create({
   loginContainer: {
-    height: 510,
+    height: verticalScale(510),
     width: "100%",
-    borderTopLeftRadius: 40,
-    borderTopRightRadius: 40,
+    borderTopLeftRadius: moderateScale(40),
+    borderTopRightRadius: moderateScale(40),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    paddingTop: 50,
-    paddingHorizontal: 20,
+    paddingTop: verticalScale(40),
+    paddingHorizontal: horizontalScale(20),
   },
   container: {
     display: "flex",
-    paddingHorizontal: 20,
+    paddingHorizontal: horizontalScale(20),
     width: "100%",
     height: "100%",
   },
   titleText: {
     color: "#636775",
     fontFamily: "Rem",
-    fontSize: 30,
+    fontSize: moderateScale(30),
     fontStyle: "normal",
     fontWeight: "300",
   },
   input: {
-    height: 50,
+    height: verticalScale(50),
     width: "100%",
     color: "#A4A4A4",
     fontFamily: "Poppins",
     fontWeight: 400,
-    fontSize: 20,
-    paddingHorizontal: 20,
+    fontSize: moderateScale(20),
+    paddingHorizontal: horizontalScale(20),
   },
   inputContainer: {
     width: "100%",
-    borderRadius: 12,
+    borderRadius: moderateScale(12),
   },
   button: {
     backgroundColor: "#F39C5D",
-    borderRadius: 10,
+    borderRadius: moderateScale(12),
     width: "100%",
-    paddingVertical: 15,
+    paddingVertical: verticalScale(15),
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 40,
+    marginTop: verticalScale(40),
   },
   buttonText: {
     color: "black",
     fontFamily: "Poppins",
     fontWeight: "400",
-    fontSize: 18,
+    fontSize: moderateScale(18),
   },
 });

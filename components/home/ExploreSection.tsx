@@ -1,4 +1,9 @@
 import RightArrow from "@/assets/images/arrow";
+import {
+  horizontalScale,
+  moderateScale,
+  verticalScale,
+} from "@/utils/dimensionUtils";
 import React from "react";
 import {
   Image,
@@ -79,14 +84,14 @@ const styles = StyleSheet.create({
   exploreText: {
     color: "#FFF",
     fontFamily: "Poppins",
-    fontSize: 36,
+    fontSize: moderateScale(36),
     fontStyle: "normal",
     fontWeight: 400,
   },
   productText: {
     color: "#F39C5D",
     fontFamily: "Poppins",
-    fontSize: 20,
+    fontSize: moderateScale(20),
     fontStyle: "normal",
     fontWeight: "400",
   },
@@ -94,40 +99,40 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
-    gap: 12,
+    gap: horizontalScale(12),
   },
   productBoxContainer: {
     display: "flex",
     flex: 1,
   },
   productBox: {
-    borderRadius: 20,
+    borderRadius: moderateScale(20),
     backgroundColor: "#353841",
-    paddingTop: 40,
-    paddingLeft: 12,
-    paddingRight: 6,
-    paddingBottom: 6,
-    marginTop: 140,
+    paddingTop: verticalScale(40),
+    paddingLeft: horizontalScale(12),
+    paddingRight: horizontalScale(6),
+    paddingBottom: verticalScale(6),
+    marginTop: verticalScale(140),
   },
   productTitle: {
     color: "#F3F3F3",
     fontFamily: "Poppins",
-    fontSize: 20,
+    fontSize: moderateScale(20),
     fontStyle: "normal",
     fontWeight: "400",
   },
   productItemCount: {
     color: "#F3F3F3",
     fontFamily: "Poppins",
-    fontSize: 16,
+    fontSize: moderateScale(16),
     fontStyle: "normal",
     fontWeight: "400",
   },
   button: {
     display: "flex",
-    width: 40,
-    height: 40,
-    borderRadius: 40,
+    width: horizontalScale(40),
+    height: verticalScale(40),
+    borderRadius: moderateScale(40),
     backgroundColor: "black",
     justifyContent: "center",
     alignItems: "center",
@@ -136,5 +141,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     zIndex: 2,
     top: 0,
+    height: verticalScale(175),
+    width: horizontalScale(175),
   },
 });
