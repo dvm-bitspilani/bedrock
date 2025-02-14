@@ -41,8 +41,8 @@
         "expo-build-properties",
         {
           "android": {
-            "minSdkVersion": 18,
-            "kotlinVersion": "1.6.0",
+            "minSdkVersion": 21,
+            "kotlinVersion": "1.6.10",
             "extraMavenRepos": [
               "https://artifactory.paytm.in/libs-release-local"
             ],
@@ -63,7 +63,7 @@
             }
           },
           "ios": {
-            "deploymentTarget": "13.0"
+            "deploymentTarget": "15.1"
           }
         }
       ]
