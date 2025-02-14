@@ -14,14 +14,22 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.dvm.bedrock",
+      "infoPlist": {
+      "CFBundleURLTypes": [
+        {
+          "CFBundleURLSchemes": ["com.googleusercontent.apps.65583415920-8gdphtm68gjiichvph2nbqioua55vklr"]
+        }
+      ]
+    }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.anonymous.bedrock"
+      "package": "com.dvm.bedrock"
     },
     "web": {
       "bundler": "metro",
@@ -29,7 +37,13 @@
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      [
+        "@react-native-google-signin/google-signin",
+        {
+          "iosUrlScheme": "com.googleusercontent.apps.65583415920-8gdphtm68gjiichvph2nbqioua55vklr"
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true
