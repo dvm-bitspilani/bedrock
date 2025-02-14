@@ -1,4 +1,5 @@
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { GoogleSignin } from "@react-native-google-signin/google-signin";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
@@ -21,6 +22,10 @@ export default function RootLayout() {
     Manrope: require("../assets/fonts/manrope.ttf"),
     ...FontAwesome.font,
   });
+
+  useEffect(() => {
+    GoogleSignin.configure();
+  }, []);
 
   // Expo Router uses Error Boundaries to catch errors in the navigation tree.
   useEffect(() => {

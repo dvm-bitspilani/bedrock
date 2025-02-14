@@ -16,20 +16,15 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.dvm.bedrock",
-      "infoPlist": {
-      "CFBundleURLTypes": [
-        {
-          "CFBundleURLSchemes": ["com.googleusercontent.apps.65583415920-8gdphtm68gjiichvph2nbqioua55vklr"]
-        }
-      ]
-    }
+      "googleServicesFile": "./GoogleService-Info.plist"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.dvm.bedrock"
+      "package": "com.dvm.bedrock",
+      "googleServicesFile": "./google-services.json"
     },
     "web": {
       "bundler": "metro",
@@ -38,12 +33,7 @@
     },
     "plugins": [
       "expo-router",
-      [
-        "@react-native-google-signin/google-signin",
-        {
-          "iosUrlScheme": "com.googleusercontent.apps.65583415920-8gdphtm68gjiichvph2nbqioua55vklr"
-        }
-      ]
+      ["@react-native-google-signin/google-signin"]
     ],
     "experiments": {
       "typedRoutes": true

@@ -3,6 +3,7 @@ import {
   moderateScale,
   verticalScale,
 } from "@/utils/dimensionUtils";
+import { GoogleSignin, GoogleSigninButton, isErrorWithCode, isSuccessResponse, statusCodes } from "@react-native-google-signin/google-signin";
 import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
 import React, { useState } from "react";
@@ -17,6 +18,40 @@ import {
 export default function LoginContainer() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  const signIn = async () => {
+    try {
+      await GoogleSignin.hasPlayServices();
+      const response = await GoogleSignin.signIn();
+      if (isSuccessResponse(response)) {
+        // setState({ userInfo: response.data });
+        console.log(response);
+      } else {
+        // sign in was cancelled by user
+        console.log("Sign in was cancelled by user");
+      }
+    } catch (error) {
+      if (isErrorWithCode(error)) {
+        switch (error.code) {
+          case statusCodes.IN_PROGRESS:
+            // operation (eg. sign in) already in progress
+            console.log("Operation already in progress");
+            break;
+          case statusCodes.PLAY_SERVICES_NOT_AVAILABLE:
+            // Android only, play services not available or outdated
+            console.log("Play services not available or outdated");
+            break;
+          default:
+          // some other error happened
+          console.log("Some other error happened");
+          console.log(error);
+        }
+      } else {
+        // an error that's not related to google sign in occurred
+        console.log("An error that's not related to google sign in occurred");
+      }
+    }
+  };
 
   return (
     <LinearGradient
@@ -67,6 +102,14 @@ export default function LoginContainer() {
       >
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
+      <GoogleSigninButton
+        size={GoogleSigninButton.Size.Wide}
+        color={GoogleSigninButton.Color.Dark}
+        onPress={() => {
+          console.log("Google Signin Pressed");
+          signIn();
+        }}
+      />
     </LinearGradient>
   );
 }
