@@ -17,15 +17,13 @@ import {
 export default function MenuGrid({ menuItems }: { menuItems: MenuItem[] }) {
   return (
     <ScrollView showsVerticalScrollIndicator={false} style={styles.menuGrid}>
-      {/* {menuItems.map((menuItem) => (
-        <MenuItemCard menuItem={menuItem} />
-      ))} */}
       <FlashList
         data={menuItems}
         renderItem={(item) => (
           <MenuItemCard menuItem={item.item} index={item.index} />
         )}
         numColumns={2}
+        estimatedItemSize={163}
       />
     </ScrollView>
   );
@@ -53,7 +51,7 @@ function MenuItemCard({
     >
       <View style={{ gap: verticalScale(9) }}>
         <Text style={styles.itemName}>{menuItem.name}</Text>
-        <Text style={styles.itemPrice}>{menuItem.price}</Text>
+        <Text style={styles.itemPrice}>Rs. {menuItem.price}</Text>
       </View>
       {!isAdded ? (
         <TouchableOpacity

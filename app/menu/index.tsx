@@ -13,6 +13,7 @@ import { useLocalSearchParams } from "expo-router";
 import MenuHeader from "@/components/menu/MenuHeader";
 import MenuGrid from "@/components/menu/MenuGrid";
 import { MenuItem } from "@/store/globalStore";
+import MenuFooter from "@/components/menu/MenuFooter";
 
 export default function MenuScreen() {
   const { type } = useLocalSearchParams();
@@ -85,13 +86,13 @@ export default function MenuScreen() {
       colors={["#2D2E33", "#17181B"]}
       start={{ x: 0, y: 0 }}
       end={{ x: 0, y: 1 }}
-      style={styles.container}
+      style={{ flex: 1 }}
     >
-      <SafeAreaView style={{ flex: 1 }}>
+      <SafeAreaView style={styles.container}>
         <MenuHeader title="Special Menu" count={12} />
         <MenuGrid menuItems={menu} />
-        {/* <MenuFooter></MenuFooter> */}
       </SafeAreaView>
+      <MenuFooter />
     </LinearGradient>
   );
 }
@@ -99,6 +100,6 @@ export default function MenuScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: horizontalScale(24),
+    marginHorizontal: horizontalScale(24),
   },
 });

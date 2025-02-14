@@ -1,5 +1,6 @@
 import { horizontalScale, moderateScale } from "@/utils/dimensionUtils";
 import { FontAwesome } from "@expo/vector-icons";
+import { router } from "expo-router";
 import { StyleSheet, Text, View } from "react-native";
 
 export default function MenuHeader({
@@ -11,7 +12,12 @@ export default function MenuHeader({
 }) {
   return (
     <View style={styles.container}>
-      <FontAwesome name="chevron-left" size={24} color="white" />
+      <FontAwesome
+        onPress={() => router.back()}
+        name="chevron-left"
+        size={24}
+        color="white"
+      />
       <View>
         <Text style={styles.headerTitle}>{title}</Text>
         <Text style={styles.headerSubtitle}>{count} Items</Text>
