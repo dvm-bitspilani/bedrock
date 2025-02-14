@@ -24,7 +24,10 @@ export default function RootLayout() {
   });
 
   useEffect(() => {
-    GoogleSignin.configure();
+    GoogleSignin.configure({
+      webClientId: '355391024350-c72n4g4mqhs0icd6g75p21mnj85hrgk0.apps.googleusercontent.com'
+    });
+    console.log("Google Signin Configured");
   }, []);
 
   // Expo Router uses Error Boundaries to catch errors in the navigation tree.

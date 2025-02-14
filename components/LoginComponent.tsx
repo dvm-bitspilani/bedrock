@@ -24,7 +24,6 @@ export default function LoginContainer() {
       await GoogleSignin.hasPlayServices();
       const response = await GoogleSignin.signIn();
       if (isSuccessResponse(response)) {
-        // setState({ userInfo: response.data });
         console.log(response);
       } else {
         // sign in was cancelled by user
@@ -44,7 +43,7 @@ export default function LoginContainer() {
           default:
           // some other error happened
           console.log("Some other error happened");
-          console.log(error);
+          console.log(error, error.code);
         }
       } else {
         // an error that's not related to google sign in occurred
