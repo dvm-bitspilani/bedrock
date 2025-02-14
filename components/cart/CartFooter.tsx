@@ -13,6 +13,11 @@ export default function CartFooter() {
     (acc, item) => acc + item.menuItem.price * item.quantity,
     0
   );
+
+  const placeOrder = () => {
+    console.log("Placing order");
+  };
+
   return (
     <View style={styles.footer}>
       <View
@@ -26,7 +31,7 @@ export default function CartFooter() {
         <Text style={styles.viewCartText}>Your Total</Text>
         <Text style={styles.itemCount}>Rs. {total}</Text>
       </View>
-      <TouchableOpacity style={styles.placeOrderButton}>
+      <TouchableOpacity style={styles.placeOrderButton} onPress={placeOrder}>
         <Text style={styles.placeOrderText}>Place Order</Text>
       </TouchableOpacity>
     </View>
