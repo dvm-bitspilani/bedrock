@@ -24,7 +24,7 @@
         "backgroundColor": "#ffffff"
       },
       "package": "com.dvm.bedrock",
-      "googleServicesFile": "./google-services.json",
+      "googleServicesFile": "./google-services.json"
     },
     "web": {
       "bundler": "metro",
@@ -33,16 +33,14 @@
     },
     "plugins": [
       "expo-router",
-      [
-        "@react-native-google-signin/google-signin"
-      ],
+      ["@react-native-google-signin/google-signin"],
       "expo-secure-store",
       "expo-build-properties",
       [
         "expo-build-properties",
         {
           "android": {
-            "kotlinVersion": "1.6.10",
+            "kotlinVersion": "1.7.20",
             "extraMavenRepos": [
               "https://artifactory.paytm.in/libs-release-local"
             ],
