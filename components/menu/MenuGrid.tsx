@@ -103,7 +103,6 @@ const styles = StyleSheet.create({
     fontSize: moderateScale(20),
     fontStyle: "normal",
     fontWeight: "400",
-    textOverflow: "ellipsis",
   },
   itemPrice: {
     color: "#F39C5D",

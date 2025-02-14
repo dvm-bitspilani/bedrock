@@ -1,20 +1,18 @@
+import {
+  horizontalScale,
+  moderateScale,
+  verticalScale,
+} from "@/utils/dimensionUtils";
+import { LinearGradient } from "expo-linear-gradient";
+import { router } from "expo-router";
 import React, { useState } from "react";
 import {
-  KeyboardAvoidingView,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
-
-import { LinearGradient } from "expo-linear-gradient";
-import { router } from "expo-router";
-import {
-  horizontalScale,
-  moderateScale,
-  verticalScale,
-} from "@/utils/dimensionUtils";
 
 export default function LoginContainer() {
   const [username, setUsername] = useState("");

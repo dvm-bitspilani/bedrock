@@ -4,7 +4,6 @@ import {
   moderateScale,
   verticalScale,
 } from "@/utils/dimensionUtils";
-import { router } from "expo-router";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export default function CartFooter() {

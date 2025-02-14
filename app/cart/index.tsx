@@ -1,11 +1,10 @@
-import { SafeAreaView, StyleSheet } from "react-native";
-
-import { LinearGradient } from "expo-linear-gradient";
-import { horizontalScale } from "@/utils/dimensionUtils";
-import MenuHeader from "@/components/menu/MenuHeader";
-import MenuGrid from "@/components/menu/MenuGrid";
-import useStore from "@/store/globalStore";
 import CartFooter from "@/components/cart/CartFooter";
+import MenuGrid from "@/components/menu/MenuGrid";
+import MenuHeader from "@/components/menu/MenuHeader";
+import useStore from "@/store/globalStore";
+import { horizontalScale } from "@/utils/dimensionUtils";
+import { LinearGradient } from "expo-linear-gradient";
+import { SafeAreaView, StyleSheet } from "react-native";
 
 export default function CartScreen() {
   const cartItems = useStore((state) => state.cartItems);

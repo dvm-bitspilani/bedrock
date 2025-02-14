@@ -1,7 +1,6 @@
-import { Image, StyleSheet, View } from "react-native";
-
-import { LinearGradient } from "expo-linear-gradient";
 import LoginContainer from "@/components/LoginComponent";
+import { LinearGradient } from "expo-linear-gradient";
+import { Image, StyleSheet, View } from "react-native";
 
 export default function TabOneScreen() {
   return (

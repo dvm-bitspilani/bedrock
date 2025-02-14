@@ -1,16 +1,13 @@
+import ExploreSection from "@/components/home/ExploreSection";
+import HomeHeader from "@/components/home/HomeHeader";
+import LeaderboardSection from "@/components/home/LeaderboardSection";
+import { horizontalScale } from "@/utils/dimensionUtils";
+import { LinearGradient } from "expo-linear-gradient";
 import {
-  Image,
   SafeAreaView,
-  ScrollView,
   StyleSheet,
   View,
 } from "react-native";
-
-import { LinearGradient } from "expo-linear-gradient";
-import HomeHeader from "@/components/home/HomeHeader";
-import ExploreSection from "@/components/home/ExploreSection";
-import LeaderboardSection from "@/components/home/LeaderboardSection";
-import { horizontalScale } from "@/utils/dimensionUtils";
 
 export default function HomeScreen() {
   return (
