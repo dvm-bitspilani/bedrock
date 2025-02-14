@@ -16,7 +16,13 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.dvm.bedrock",
-      "googleServicesFile": "./GoogleService-Info.plist"
+      "googleServicesFile": "./GoogleService-Info.plist",
+      "infoPlist": {
+        "LSApplicationQueriesSchemes": ["paytm"],
+        "CFBundleURLTypes": [{
+          "CFBundleURLSchemes": ["paytmCOM.DVM.BEDROCK"]
+        }]
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -24,7 +30,8 @@
         "backgroundColor": "#ffffff"
       },
       "package": "com.dvm.bedrock",
-      "googleServicesFile": "./google-services.json"
+      "googleServicesFile": "./google-services.json",
+
     },
     "web": {
       "bundler": "metro",
@@ -44,11 +51,12 @@
             "extraMavenRepos": [
               "https://artifactory.paytm.in/libs-release-local"
             ],
-            "dependencies": [
-              "com.squareup.okhttp3:okhttp:4.2.1",
-              "com.squareup.okhttp3:logging-interceptor:4.2.1",
-              "com.squareup.okhttp3:okhttp-urlconnection:4.2.1"
-            ]
+            "buildConfigFields": {
+              "PAYTM_CALLBACK_URL": {
+                "type": "string",
+                "value": "com.dvm.bedrock://paytm-callback"
+              }
+            }
           }
         }
       ]
