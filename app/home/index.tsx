@@ -3,6 +3,7 @@ import HomeHeader from "@/components/home/HomeHeader";
 import LeaderboardSection from "@/components/home/LeaderboardSection";
 import { horizontalScale } from "@/utils/dimensionUtils";
 import { LinearGradient } from "expo-linear-gradient";
+import { StatusBar } from "expo-status-bar";
 import {
   SafeAreaView,
   StyleSheet,

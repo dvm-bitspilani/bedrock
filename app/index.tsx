@@ -1,5 +1,6 @@
 import LoginContainer from "@/components/LoginComponent";
 import { LinearGradient } from "expo-linear-gradient";
+import { StatusBar } from "expo-status-bar";
 import { Image, StyleSheet, View } from "react-native";
 
 export default function TabOneScreen() {
@@ -10,6 +11,7 @@ export default function TabOneScreen() {
       end={{ x: 1, y: 1 }}
       style={styles.container}
     >
+      <StatusBar style="light" />
       <Image
         style={styles.burgerImage}
         source={require("@/assets/images/burger.png")}
