@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "355391024350",
+    "project_id": "dvm-bedrock",
+    "storage_bucket": "dvm-bedrock.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:355391024350:android:85361afdd754653d7e664f",
+        "android_client_info": {
+          "package_name": "com.dvm.bedrock"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "355391024350-bopmep6nk9r8mo6786emdfankou2f7jk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dvm.bedrock",
+            "certificate_hash": "afd4eca1be64b683f364bdda5370f2166ddec796"
+          }
+        },
+        {
+          "client_id": "355391024350-c72n4g4mqhs0icd6g75p21mnj85hrgk0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4Nihoc70HejR_IUgtn8RAml1XyYQ4lIY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "355391024350-c72n4g4mqhs0icd6g75p21mnj85hrgk0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "355391024350-p38u3cnuhicldrfomqteltum2imqbhoa.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.dvm.bedrock"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
