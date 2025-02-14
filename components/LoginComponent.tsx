@@ -1,3 +1,4 @@
+import { baseUrl, loginEndpoint } from "@/constants/endpoints";
 import {
   horizontalScale,
   moderateScale,
@@ -14,6 +15,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import * as SecureStore from 'expo-secure-store';
 
 export default function LoginContainer() {
   const [username, setUsername] = useState("");
@@ -24,6 +26,30 @@ export default function LoginContainer() {
       await GoogleSignin.hasPlayServices();
       const response = await GoogleSignin.signIn();
       if (isSuccessResponse(response)) {
+        const idToken = response.data.idToken;
+        try {
+          const response = await fetch(baseUrl + loginEndpoint, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              token: idToken
+            })
+          });
+
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+
+          const data = await response.json();
+          console.log(data);
+          await SecureStore.setItemAsync('token', data.token);
+
+          router.push("/home");
+        } catch (error) {
+          console.error("Failed to login:", error);
+        }
         console.log(response);
       } else {
         // sign in was cancelled by user
