@@ -1,21 +1,22 @@
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
 import { useFonts } from "expo-font";
-import { Stack } from "expo-router";
+import { router, Slot, Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
-import * as SecureStore from 'expo-secure-store';
-import { useEffect, useState } from "react";
-import "react-native-reanimated";
+import { useEffect } from "react";
+import { AuthProvider, useAuth } from "@/context/AuthContext";
+export { ErrorBoundary } from "expo-router";
 
-export {
-  // Catch any errors thrown by the Layout component.
-  ErrorBoundary,
-} from "expo-router";
-
-// Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
-export default function RootLayout() {
+SplashScreen.setOptions({
+  duration: 100,
+  fade: true,
+});
+
+function RootLayout() {
+  const { status } = useAuth();
+
   const [loaded, error] = useFonts({
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
     Rem: require("../assets/fonts/rem.ttf"),
@@ -24,50 +25,39 @@ export default function RootLayout() {
     ...FontAwesome.font,
   });
 
-  const [initialRoute, setInitialRoute] = useState("index");
-
   useEffect(() => {
     GoogleSignin.configure({
       webClientId:
         "355391024350-c72n4g4mqhs0icd6g75p21mnj85hrgk0.apps.googleusercontent.com",
     });
-    console.log("Google Signin Configured");
-
-    const checkToken = async () => {
-      const token = await SecureStore.getItemAsync('token');
-      if (token) {
-        setInitialRoute("home/index");
-      }
-    };
-
-    checkToken();
   }, []);
 
-  // Expo Router uses Error Boundaries to catch errors in the navigation tree.
   useEffect(() => {
-    if (error) throw error;
-  }, [error]);
+    if (error || status === "error") throw error;
+  }, [error, status]);
 
   useEffect(() => {
-    if (loaded) {
+    if (loaded && status !== "loading") {
       SplashScreen.hideAsync();
+      if (status === "false") {
+        router.replace("/");
+      } else if (status === "true") {
+        router.replace("/home");
+      }
     }
-  }, [loaded]);
+  }, [loaded, status]);
 
-  if (!loaded) {
+  if (!loaded || status === "loading") {
     return null;
   }
 
-  return <RootLayoutNav initialRoute={initialRoute} />;
+  return <Slot />;
 }
 
-function RootLayoutNav({ initialRoute }: { initialRoute: string }) {
+export default function App() {
   return (
-    <Stack initialRouteName={initialRoute}>
-      <Stack.Screen name="index" options={{ headerShown: false }} />
-      <Stack.Screen name="home/index" options={{ headerShown: false }} />
-      <Stack.Screen name="menu/index" options={{ headerShown: false }} />
-      <Stack.Screen name="cart/index" options={{ headerShown: false }} />
-    </Stack>
+    <AuthProvider>
+      <RootLayout />
+    </AuthProvider>
   );
 }
