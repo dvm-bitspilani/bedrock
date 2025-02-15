@@ -24,33 +24,34 @@ export default function LoginContainer() {
   const signIn = async () => {
     try {
       await GoogleSignin.hasPlayServices();
+      await GoogleSignin.signOut();
       const response = await GoogleSignin.signIn();
       if (isSuccessResponse(response)) {
-        const idToken = response.data.idToken;
+        const idToken = (await GoogleSignin.getTokens()).accessToken;
+        console.log(response.data);
         try {
-          const response = await fetch(baseUrl + loginEndpoint, {
+          const res = await fetch(baseUrl + loginEndpoint, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              token: idToken
+              token: idToken,
             })
           });
 
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+          if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`);
           }
 
-          const data = await response.json();
+          const data = await res.json();
           console.log(data);
-          await SecureStore.setItemAsync('token', data.token);
+          await SecureStore.setItemAsync('token', data.access);
 
           router.push("/home");
         } catch (error) {
           console.error("Failed to login:", error);
         }
-        console.log(response);
       } else {
         // sign in was cancelled by user
         console.log("Sign in was cancelled by user");
@@ -122,7 +123,7 @@ export default function LoginContainer() {
       <TouchableOpacity
         style={styles.button}
         onPress={() => {
-          router.push("/home");
+          // router.push("/home");
         }}
       >
         <Text style={styles.buttonText}>Login</Text>

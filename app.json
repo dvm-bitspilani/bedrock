@@ -18,10 +18,24 @@
       "bundleIdentifier": "com.dvm.bedrock",
       "googleServicesFile": "./GoogleService-Info.plist",
       "infoPlist": {
-        "LSApplicationQueriesSchemes": ["paytm"],
-        "CFBundleURLTypes": [{
-          "CFBundleURLSchemes": ["paytmCOM.DVM.BEDROCK"]
-        }]
+        "LSApplicationQueriesSchemes": [
+          "paytm",
+          "paytm"
+        ],
+        "CFBundleURLTypes": [
+          {
+            "CFBundleURLSchemes": [
+              "paytmMid123"
+            ]
+          },
+          {
+            "CFBundleURLSchemes": [
+              "paytmMid123"
+            ]
+          }
+        ],
+        "ITSAppUsesNonExemptEncryption": false
+
       }
     },
     "android": {
@@ -44,22 +58,20 @@
       "expo-secure-store",
       "expo-build-properties",
       [
+        "@react-native-google-signin/google-signin"
+      ],
+      "expo-secure-store",
+      [
         "expo-build-properties",
         {
           "android": {
-            "kotlinVersion": "1.7.20",
             "extraMavenRepos": [
               "https://artifactory.paytm.in/libs-release-local"
-            ],
-            "buildConfigFields": {
-              "PAYTM_CALLBACK_URL": {
-                "type": "string",
-                "value": "com.dvm.bedrock://paytm-callback"
-              }
-            }
+            ]
           }
         }
-      ]
+      ],
+      "./withPaytmURLScheme"
     ],
     "experiments": {
       "typedRoutes": true

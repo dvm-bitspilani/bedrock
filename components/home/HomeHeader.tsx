@@ -3,10 +3,24 @@ import {
   moderateScale,
   verticalScale,
 } from "@/utils/dimensionUtils";
+import { SignOut } from "phosphor-react-native";
 import React, { useState } from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import * as SecureStore from "expo-secure-store";
+import { useAuth } from "@/context/AuthContext";
 
 export default function HomeHeader() {
+  const { setStatus } = useAuth();
+
+  async function logout() {
+    try {
+      await SecureStore.deleteItemAsync("token");
+      setStatus("false");
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   return (
     <View style={styles.headerContainer}>
       <View
@@ -17,13 +31,15 @@ export default function HomeHeader() {
         }}
       >
         <Text style={styles.greetingText}>Hello Shivang</Text>
-        <Text style={styles.expenditureText}>Rs. 0</Text>
+        {/* <Text style={styles.expenditureText}>Rs. 0</Text> */}
       </View>
-
-      <View style={styles.medalImageContainer}>
+      <TouchableOpacity onPress={logout}>
+        <SignOut size={16} />
+      </TouchableOpacity>
+      {/* <View style={styles.medalImageContainer}>
         <Image source={require("@/assets/images/medal.png")}></Image>
         <Text style={styles.positionText}>7th {"\n"} Position</Text>
-      </View>
+      </View> */}
     </View>
   );
 }

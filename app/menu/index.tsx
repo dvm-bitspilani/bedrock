@@ -12,74 +12,34 @@ import { horizontalScale } from "@/utils/dimensionUtils";
 import { useLocalSearchParams } from "expo-router";
 import MenuHeader from "@/components/menu/MenuHeader";
 import MenuGrid from "@/components/menu/MenuGrid";
-import { MenuItem } from "@/store/globalStore";
 import MenuFooter from "@/components/menu/MenuFooter";
+import useStore, { MenuItem } from "@/store/globalStore";
+import { useEffect } from "react";
+import { baseUrl, menuEndpoint } from "@/constants/endpoints";
+import * as SecureStore from 'expo-secure-store';
 
 export default function MenuScreen() {
   const { type } = useLocalSearchParams();
+  const { menuItems, setMenuItems } = useStore();
 
-  const menu: MenuItem[] = [
-    {
-      name: "Burger",
-      price: 10.99,
-      id: 1,
-      isCombo: true,
-    },
-    {
-      name: "Pizza",
-      price: 14.99,
-      id: 2,
-      isCombo: false,
-    },
-    {
-      name: "Salad",
-      price: 8.99,
-      id: 3,
-      isCombo: false,
-    },
-    {
-      name: "Fries",
-      price: 4.99,
-      id: 4,
-      isCombo: true,
-    },
-    {
-      name: "Soda",
-      price: 2.99,
-      id: 5,
-      isCombo: true,
-    },
-    {
-      name: "Chicken Wings",
-      price: 12.99,
-      id: 6,
-      isCombo: false,
-    },
-    {
-      name: "Tacos",
-      price: 11.99,
-      id: 7,
-      isCombo: true,
-    },
-    {
-      name: "Sandwich",
-      price: 9.99,
-      id: 8,
-      isCombo: false,
-    },
-    {
-      name: "Soup",
-      price: 6.99,
-      id: 9,
-      isCombo: true,
-    },
-    {
-      name: "Dessert",
-      price: 5.99,
-      id: 10,
-      isCombo: false,
-    },
-  ];
+  useEffect(() => {
+    const fetchMenuItems = async () => {
+      const token = await SecureStore.getItemAsync("token");
+      try {
+        const response = await fetch(`${baseUrl}${menuEndpoint}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const data: MenuItem[] = await response.json();
+        setMenuItems(data);
+      } catch (error) {
+        console.error("Failed to fetch menu items:", error);
+      }
+    };
+
+    fetchMenuItems();
+  }, [setMenuItems]);
 
   return (
     <LinearGradient
@@ -89,8 +49,8 @@ export default function MenuScreen() {
       style={{ flex: 1 }}
     >
       <SafeAreaView style={styles.container}>
-        <MenuHeader title="Special Menu" count={12} />
-        <MenuGrid menuItems={menu} />
+        <MenuHeader title="Special Menu" count={menuItems.length} />
+        <MenuGrid menuItems={menuItems} />
       </SafeAreaView>
       <MenuFooter />
     </LinearGradient>

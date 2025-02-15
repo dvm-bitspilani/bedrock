@@ -1,7 +1,7 @@
 import ExploreSection from "@/components/home/ExploreSection";
 import HomeHeader from "@/components/home/HomeHeader";
 import LeaderboardSection from "@/components/home/LeaderboardSection";
-import { horizontalScale } from "@/utils/dimensionUtils";
+import { horizontalScale, verticalScale } from "@/utils/dimensionUtils";
 import { LinearGradient } from "expo-linear-gradient";
 import { StatusBar } from "expo-status-bar";
 import {
@@ -22,7 +22,7 @@ export default function HomeScreen() {
         <HomeHeader></HomeHeader>
         <ExploreSection></ExploreSection>
         <View style={{ height: 20 }}></View>
-        <LeaderboardSection></LeaderboardSection>
+        {/* <LeaderboardSection></LeaderboardSection> */}
       </SafeAreaView>
     </LinearGradient>
   );
@@ -32,5 +32,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: horizontalScale(24),
+    paddingTop: verticalScale(70),
   },
 });

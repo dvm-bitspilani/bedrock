@@ -51,7 +51,7 @@ function MenuItemCard({
     >
       <View style={{ gap: verticalScale(9) }}>
         <Text style={styles.itemName}>{menuItem.name}</Text>
-        <Text style={styles.itemPrice}>Rs. {menuItem.price}</Text>
+        <Text style={styles.itemPrice}>Rs. {menuItem.base_price}</Text>
       </View>
       {!isAdded ? (
         <TouchableOpacity

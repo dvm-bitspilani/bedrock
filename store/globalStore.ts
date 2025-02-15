@@ -1,29 +1,32 @@
 import { create } from "zustand";
 
 interface StoreState {
-	user: User;
-	setUser: (user: User) => void;
+  user: User;
+  setUser: (user: User) => void;
 
-	menuItems: MenuItem[];
-	setMenuItems: (menuItems: MenuItem[]) => void;
+  menuItems: MenuItem[];
+  setMenuItems: (menuItems: MenuItem[]) => void;
 
-	cartItems: CartItem[];
-	setCartItems: (cartItems: CartItem[]) => void;
-	incrementItemQuantity: (menuItem: MenuItem) => void;
-	decrementItemQuantity: (menuItem: MenuItem) => void;
+  cartItems: CartItem[];
+  setCartItems: (cartItems: CartItem[]) => void;
+  incrementItemQuantity: (menuItem: MenuItem) => void;
+  decrementItemQuantity: (menuItem: MenuItem) => void;
 }
 
 export type MenuItem = {
-  name: string;
-  price: number;
   id: number;
-  isCombo: boolean;
+  name: string;
+  base_price: number;
+  is_veg: boolean;
+  is_available: boolean;
 };
+
 export type User = {
   email: string;
   expenditure: number;
   position: number | undefined;
 };
+
 export type CartItem = { menuItem: MenuItem; quantity: number };
 
 const useStore = create<StoreState>((set) => ({
