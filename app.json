@@ -17,6 +17,25 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.dvm.bedrock",
       "googleServicesFile": "./GoogleService-Info.plist",
+      "infoPlist": {
+        "LSApplicationQueriesSchemes": [
+          "paytm",
+          "paytm"
+        ],
+        "CFBundleURLTypes": [
+          {
+            "CFBundleURLSchemes": [
+              "paytmMid123"
+            ]
+          },
+          {
+            "CFBundleURLSchemes": [
+              "paytmMid123"
+            ]
+          }
+        ],
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -24,7 +43,7 @@
         "backgroundColor": "#ffffff"
       },
       "package": "com.dvm.bedrock",
-      "googleServicesFile": "./google-services.json",
+      "googleServicesFile": "./google-services.json"
     },
     "web": {
       "bundler": "metro",
@@ -41,32 +60,13 @@
         "expo-build-properties",
         {
           "android": {
-            "minSdkVersion": 21,
-            "kotlinVersion": "1.6.10",
             "extraMavenRepos": [
               "https://artifactory.paytm.in/libs-release-local"
-            ],
-            "dependencies": [
-              "com.squareup.okhttp3:okhttp:4.2.1",
-              "com.squareup.okhttp3:logging-interceptor:4.2.1",
-              "com.squareup.okhttp3:okhttp-urlconnection:4.2.1"
-            ],
-            "configurations": {
-              "all": {
-                "exclude": [
-                  {
-                    "group": "com.squareup.okhttp3",
-                    "module": "okhttp3"
-                  }
-                ]
-              }
-            }
-          },
-          "ios": {
-            "deploymentTarget": "15.1"
+            ]
           }
         }
-      ]
+      ],
+      "./withPaytmURLScheme"
     ],
     "experiments": {
       "typedRoutes": true

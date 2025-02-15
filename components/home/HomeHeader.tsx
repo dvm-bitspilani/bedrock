@@ -17,13 +17,13 @@ export default function HomeHeader() {
         }}
       >
         <Text style={styles.greetingText}>Hello Shivang</Text>
-        <Text style={styles.expenditureText}>Rs. 0</Text>
+        {/* <Text style={styles.expenditureText}>Rs. 0</Text> */}
       </View>
 
-      <View style={styles.medalImageContainer}>
+      {/* <View style={styles.medalImageContainer}>
         <Image source={require("@/assets/images/medal.png")}></Image>
         <Text style={styles.positionText}>7th {"\n"} Position</Text>
-      </View>
+      </View> */}
     </View>
   );
 }

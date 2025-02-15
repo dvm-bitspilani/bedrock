@@ -3,12 +3,13 @@ import { GoogleSignin } from "@react-native-google-signin/google-signin";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
-import { useEffect } from "react";
+import * as SecureStore from 'expo-secure-store';
+import { useEffect, useState } from "react";
 import "react-native-reanimated";
 
 export {
   // Catch any errors thrown by the Layout component.
-  ErrorBoundary
+  ErrorBoundary,
 } from "expo-router";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -23,11 +24,23 @@ export default function RootLayout() {
     ...FontAwesome.font,
   });
 
+  const [initialRoute, setInitialRoute] = useState("index");
+
   useEffect(() => {
     GoogleSignin.configure({
-      webClientId: '355391024350-c72n4g4mqhs0icd6g75p21mnj85hrgk0.apps.googleusercontent.com'
+      webClientId:
+        "355391024350-c72n4g4mqhs0icd6g75p21mnj85hrgk0.apps.googleusercontent.com",
     });
     console.log("Google Signin Configured");
+
+    const checkToken = async () => {
+      const token = await SecureStore.getItemAsync('token');
+      if (token) {
+        setInitialRoute("home/index");
+      }
+    };
+
+    checkToken();
   }, []);
 
   // Expo Router uses Error Boundaries to catch errors in the navigation tree.
@@ -45,12 +58,12 @@ export default function RootLayout() {
     return null;
   }
 
-  return <RootLayoutNav />;
+  return <RootLayoutNav initialRoute={initialRoute} />;
 }
 
-function RootLayoutNav() {
+function RootLayoutNav({ initialRoute }: { initialRoute: string }) {
   return (
-    <Stack>
+    <Stack initialRouteName={initialRoute}>
       <Stack.Screen name="index" options={{ headerShown: false }} />
       <Stack.Screen name="home/index" options={{ headerShown: false }} />
       <Stack.Screen name="menu/index" options={{ headerShown: false }} />

@@ -39,18 +39,18 @@ export default function ExploreSection() {
             onPress={() => {
               router.push("/menu?type=special");
             }}
-            title="Special Menu"
+            title="Menu"
             itemCount={12}
             image="food1"
           />
-          <ProductItem
+          {/* <ProductItem
             onPress={() => {
               router.push("/menu?type=combo");
             }}
             title="Combos"
             itemCount={5}
             image="food1"
-          />
+          /> */}
         </View>
       </View>
     </View>

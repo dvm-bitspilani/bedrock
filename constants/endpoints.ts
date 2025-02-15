@@ -1,2 +1,4 @@
-export const baseUrl = 'http://172.17.69.152:8000';
+export const baseUrl = 'https://bedrock.bits-dvm.org';
 export const loginEndpoint = '/user/google/';
+export const menuEndpoint = '/wallet/items/';
+export const placeOrderEndpoint = '/wallet/orders/';
