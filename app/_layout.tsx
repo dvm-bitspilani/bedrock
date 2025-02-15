@@ -5,6 +5,7 @@ import { router, Slot, Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import { AuthProvider, useAuth } from "@/context/AuthContext";
+import { StatusBar } from "expo-status-bar";
 export { ErrorBoundary } from "expo-router";
 
 SplashScreen.preventAutoHideAsync();
@@ -57,6 +58,11 @@ function RootLayout() {
 export default function App() {
   return (
     <AuthProvider>
+      <StatusBar
+        backgroundColor="#0a0a0a"
+        animated
+        networkActivityIndicatorVisible
+      />
       <RootLayout />
     </AuthProvider>
   );
