@@ -69,6 +69,7 @@ export default function CartFooter() {
     } finally {
       setLoading(false);
     }
+
   };
 
   return (
@@ -90,6 +91,7 @@ export default function CartFooter() {
         ) : (
           <Text style={styles.placeOrderText}>Place Order</Text>
         )}
+
       </TouchableOpacity>
     </View>
   );

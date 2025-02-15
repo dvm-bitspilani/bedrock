@@ -35,6 +35,7 @@
           }
         ],
         "ITSAppUsesNonExemptEncryption": false
+
       }
     },
     "android": {
@@ -43,7 +44,8 @@
         "backgroundColor": "#ffffff"
       },
       "package": "com.dvm.bedrock",
-      "googleServicesFile": "./google-services.json"
+      "googleServicesFile": "./google-services.json",
+
     },
     "web": {
       "bundler": "metro",
@@ -52,6 +54,9 @@
     },
     "plugins": [
       "expo-router",
+      ["@react-native-google-signin/google-signin"],
+      "expo-secure-store",
+      "expo-build-properties",
       [
         "@react-native-google-signin/google-signin"
       ],
